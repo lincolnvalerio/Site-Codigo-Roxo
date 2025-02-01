@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Código Roxo</title>
+</head>
+<body>
+    <header>
+        <div class="icones">
+            <a href="#"><img src="imagens/linkedin (1).png" alt="Logo do Código Roxo"></a>
+            <a href="https://www.youtube.com/@CódigoRoxo" target="_blank"><img src="imagens/youtube.png" alt=""></a>
+            <a href="#"><img src="imagens/instagram (1).png" alt="Instagram"></a>
+            <a href="#"><img src="imagens/twitter.png" alt="Twitter"></a>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#regras">Regras</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#trofeus">Trofeus</a></li>
+            </ul>
+        </nav>
+        <div class="discord">
+            <img src="imagens/discord-icone.png" alt="Logo do Discord">
+            <a href="https://discord.gg/XxKNw4PbDN" target="_blank">Entrar no Discord</a>
+        </div>
+    </header>
+    
+    <div class="box-principal" id="inicio">
+        <section class="Centralizar">
+            <h1>CódigoRoxo.<span>DEV</span></h1>
+            <h2>Onde sua carreira começa!</h2>
+            <p>Bem-vindo ao seu futuro no Código Roxo. O que antes era apenas um sonho, agora pode se tornar realidade.</p>
+            <a href="https://discord.com/channels/1181274481289855006/1181307126124138606" class="botao" target="_blank">Conectar <img src="imagens/external-link.png" alt="" class="link-externo"></a>
+        </section>
+    </div>
+    
+    <div class="box-sobre" id="regras">
+        <div class="box-regras">
+            <h1>Quais são as regras do servidor?</h1>
+            <ul>
+                <li class="regras">
+                    Proibido o uso de cheats e postagem de conteúdo +18. 
+                    O uso de programas ou modificações externas para obter vantagens ilegais durante o jogo é estritamente proibido. 
+                    Também é proibido compartilhar ou exibir conteúdos inadequados para menores de idade, como pornografia ou qualquer outro material com teor explícito.
+                </li>
+                <li class="regras">
+                    Respeite os moderadores e o servidor. 
+                    Os moderadores estão aqui para garantir a boa convivência e a ordem dentro do servidor. Qualquer forma de desrespeito, agressão ou atitude hostil contra eles será tratada com seriedade. Mantenha o ambiente saudável para todos os membros.
+                </li>
+                <li class="regras">
+                    Não envie links em canais não permitidos. 
+                    É proibido enviar links para sites externos ou outros conteúdos que não estejam relacionados ao propósito do servidor, especialmente em canais onde isso é restrito. Esse tipo de ação pode ser visto como spam ou tentativa de invasão e será punido de acordo com a gravidade.
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="trofeus" id="trofeus">
+        <h1>Trofeus</h1>
+        <div class="trofeus-box">
+            <div class="box-trofeu">
+                <img src="imagens/trofeus.png" alt="Trofeu" class="trofeu">
+                <h2>Purplethon</h2>
+                <p>O Purplethon foi o primeiro evento de programação realizado pelo canal, com foco em desafios e competições de codificação. Durante o evento, os participantes tiveram a oportunidade de mostrar suas habilidades em programação e concorrer a prêmios. Foi uma experiência emocionante e enriquecedora para todos os envolvidos, marcando o início de uma série de eventos futuros.</p>
+            </div>
+            <div class="box-trofeu">
+                <img src="imagens/trofeus.png" alt="Trofeu" class="trofeu">
+                <h2>LOREM</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolores suscipit facilis cum cumque dicta veritatis alias sapiente ipsa doloribus, assumenda quaerat quidem atque dignissimos iure illo quos id sequi.</p>
+            </div>
+            <div class="box-trofeu">
+                <img src="imagens/trofeus.png" alt="Trofeu" class="trofeu">
+                <h2>LOREM</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolores suscipit facilis cum cumque dicta veritatis alias sapiente ipsa doloribus, assumenda quaerat quidem atque dignissimos iure illo quos id sequi.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h1 id="footer">CódigoRoxo.<span>DEV</span></h1>
+        <p>Todos os direitos reservados 2025</p>
+    </footer>
+
+    <script>
+function smoothScroll(target, duration) {
+    const targetElement = document.querySelector(target);
+    const targetPosition = targetElement.getBoundingClientRect().top;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    function ease(t, b, c, d) {
+        const easeInOutQuad = t => {
+            if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+            return -c / 2 * (--t * (t - 2) - 1) + b;
+        };
+        return easeInOutQuad(t);
+    }
+
+    requestAnimationFrame(animation);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        smoothScroll(this.getAttribute('href'), 1000); // 1000ms para a animação
+    });
+});
+
+    </script>
+</body>
+</html>
