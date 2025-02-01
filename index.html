@@ -80,43 +80,58 @@
 
     <footer>
         <h1 id="footer">CódigoRoxo.<span>DEV</span></h1>
-        <p>Todos os direitos reservados 2025</p>
+        <div class="direitos">
+            <p>Todos os direitos reservados 2025</p>
+        </div>
     </footer>
-
     <script>
-function smoothScroll(target, duration) {
-    const targetElement = document.querySelector(target);
-    const targetPosition = targetElement.getBoundingClientRect().top;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-        const easeInOutQuad = t => {
-            if ((t /= d / 2) < 1) return c / 2 * t * t + b;
-            return -c / 2 * (--t * (t - 2) - 1) + b;
-        };
-        return easeInOutQuad(t);
-    }
-
-    requestAnimationFrame(animation);
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        smoothScroll(this.getAttribute('href'), 1000); // 1000ms para a animação
-    });
-});
-
-    </script>
+        // Função para fazer rolagem suave
+        function smoothScrollTo(targetY, duration) {
+          const startY = window.pageYOffset; // Posição inicial
+          const distanceY = targetY - startY;  // Distância a percorrer
+          let startTime = null;
+      
+          // Função de easing (easeInOutQuad)
+          function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+          }
+      
+          // Função de animação
+          function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1); // Progresso entre 0 e 1
+            const ease = easeInOutQuad(progress);
+            window.scrollTo(0, startY + distanceY * ease);
+      
+            if (timeElapsed < duration) {
+              requestAnimationFrame(animation);
+            }
+          }
+      
+          requestAnimationFrame(animation);
+        }
+      
+        // Adiciona o evento de clique aos links de navegação
+        document.querySelectorAll('.navigation a').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+      
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            const targetPosition = targetElement.offsetTop;
+      
+            // Chama a função smoothScrollTo com duração de 1000ms (1 segundo)
+            smoothScrollTo(targetPosition, 1000);
+      
+            // Opcional: efeito visual no botão (scale)
+            this.style.transition = "transform 0.3s ease";
+            this.style.transform = "scale(1.05)";
+            setTimeout(() => {
+              this.style.transform = "scale(1)";
+            }, 300);
+          });
+        });
+      </script>
+      
 </body>
 </html>

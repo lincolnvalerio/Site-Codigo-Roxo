@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /
+}
+
+::-webkit-scrollbar-track {
+    background: #2c2c2c;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #6a5acd; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #8a2be2;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -11,7 +29,9 @@ html, body {
     height: 100%;
     font-family: Arial, sans-serif;
     background-color: #1c1c1c;
+    scroll-behavior: smooth;
 }
+
 
 header {
     display: flex;
@@ -24,8 +44,13 @@ header {
 
 img {
     background-color: purple;
-    border-radius: 50%;
+    border-radius: 30%;
     transition: 0.3s ease;
+}
+.trofeu{
+    background-color: purple;
+    border-radius: 30%;
+    width: 40px;
 }
 
 img:hover {
@@ -166,7 +191,7 @@ nav ul li a:hover {
 .box-regras h1 {
     font-size: 2rem;
     color: #c274fa;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     text-align: center;
 }
 
@@ -179,7 +204,7 @@ nav ul li a:hover {
     font-size: 1.1rem;
     color: #8a8181;
     line-height: 1.6;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
     display: flex;
     align-items: center;
 }
@@ -209,9 +234,11 @@ nav ul li a:hover {
 .trofeus {
     flex-direction: column;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     margin: 40px 0;
     gap: 20px;
+    padding: 0 20px; 
 }
 
 .trofeus h1 {
@@ -221,18 +248,21 @@ nav ul li a:hover {
 
 .trofeus-box {
     display: flex;
+    flex-wrap: wrap; 
     justify-content: center;
-    text-align: center;
+    gap: 20px;
+    width: 100%;
 }
 
 .box-trofeu {
     background-color: #ffffff08;
-    padding: 0;
-    width: 20%;
+    padding: 20px;
+    width: 30%;
+    min-width: 250px; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s ease;
-    margin-right: 10px;
+    text-align: center;
 }
 
 .box-trofeu:hover {
@@ -252,29 +282,40 @@ nav ul li a:hover {
 }
 
 footer {
-    flex-direction: row;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #1c012e;
-    padding: 5px;
+    padding: 10px 20px;
     color: white;
-    text-align: center;
 }
 
-footer #footer {
-    text-align: left;
-    font-size: 13px;
-    margin-bottom: 10px;
+footer h1 {
+    margin: 0;
+    font-size: 20px;
 }
 
 footer p {
-    font-size: 16px;
-    margin-left: 450px;
-}
-footer span{
-    color: #a200ff;
-    font-size: 11px;
+    margin: 0 auto;
+    font-size: 14px;
+    text-align: center;
+    flex-grow: 1;
 }
 
+footer span {
+    color: #a200ff;
+    font-size: 14px;
+}
+
+.direitos{
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .box-trofeu {
+        width: 45%;
+    }
+}
 
 @media (max-width: 768px) {
     header {
@@ -295,5 +336,14 @@ footer span{
 
     .discord {
         margin-top: 10px;
+    }
+
+    .trofeus-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box-trofeu {
+        width: 80%;
     }
 }
